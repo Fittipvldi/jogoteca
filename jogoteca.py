@@ -14,8 +14,9 @@ jogo1 = Jogo('Zelda: Ocarina of Time', 'Aventura', 'Nintendo64')
 jogo2 = Jogo('Zelda: Majora´s Mask', 'Aventura', 'Nintendo64')
 jogos_lista = [jogo1, jogo2]
 
+
 @app.route('/')
-def ola():
+def index():
     return '<h1>Olá Flask</h1>'
 
 
@@ -29,7 +30,7 @@ def novo():
     return render_template('novo.html', titulo='Novo jogo')
 
 
-@app.route('/criar')
+@app.route('/criar', methods=['POST'])
 def criar():
     nome = request.form['nome']
     categoria = request.form['categoria']
@@ -39,4 +40,4 @@ def criar():
     return render_template('lista.html', titulo='Jogos', jogos=jogos_lista)
 
 
-app.run()
+app.run(debug=True)
