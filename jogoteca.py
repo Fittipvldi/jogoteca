@@ -40,4 +40,17 @@ def criar():
     return redirect('/lista')
 
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/autenticar', methods=['POST'])
+def autenticar():
+    if 'mestra' == request.form['senha']:
+        return redirect('/lista')
+    else:
+        return redirect('/login')
+
+
 app.run(debug=True)
